@@ -1,0 +1,10 @@
+.settings/
+Debug/
+Release/
+.metadata
+*.launch
+.cortex-debug.peripherals.state.json
+.cortex-debug.registers.state.json
+*.log
+.vscode/settings.json
+out/*

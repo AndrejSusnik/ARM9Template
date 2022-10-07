@@ -1,0 +1,23 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "cwd": "${workspaceRoot}",
+      "executable": "./out/main.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "qemu",
+      "serverpath": "%USERPROFILE%\\AppData\\Roaming\\xPacks\\qemu-arm\\xpack-qemu-arm-7.1.0-1\\bin\\qemu-system-gnuarmeclipse.exe",
+      "cpu": "cortex-m4",
+      "machine": "STM32F4-Discovery",
+      "device": "STM32f407G",
+      "svdFile": "./STM32F407.svd",
+      "showDevDebugOutput": true,
+      "preLaunchTask": "Build"
+    },
+  ]
+}
