@@ -1,19 +1,24 @@
 MEMORY {
-	rom (rx)  : ORIGIN = 0x08000000, LENGTH = 1024K
-	ram (rwx) : ORIGIN = 0x20000000, LENGTH =  128K
+	ram0 (rwx)  : ORIGIN = 0x00000000, LENGTH = 0x00001000 
+	ram1 (rwx) : ORIGIN = 0x00300000, LENGTH = 0x00001000 
 }
 
 SECTIONS {
-	_sidata = .;
+	.text ORIGIN(ram0):
+	{
+		__text_start__ = .;
+		*(.text)
+		*(.text.*)
+		. = ALIGN(4);
+	}
 
-	.data ORIGIN(ram): 
+	.data ADDR(.text) + SIZEOF(.text):
 	{
 		__data_start__ = .;
 		*(.data*)      /* Read-write initialized data */
 		. = ALIGN(4);
 		__data_end__ = .;
 	}
-
 
 	.bss ADDR (.data) + SIZEOF (.data):
 	{
@@ -25,18 +30,9 @@ SECTIONS {
 		__bss_end__ = .;
 	}
 
-	.text ORIGIN(ram) :
-	{
-		KEEP(*(.vectors))  /* Vector table */
-		*(.text*)          /* Program code */
-		*(.rodata*)        /* Read only data */
-		. = ALIGN(4);
-		__etext = .;
-	}
-
 }
 
-__StackTop = ORIGIN(ram) + LENGTH(ram);
+__StackTop = ORIGIN(ram0) + LENGTH(ram0);
 __text_size = SIZEOF (.text);
 __data_size = SIZEOF (.data);
 __bss_size  = SIZEOF (.bss);
