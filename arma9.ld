@@ -7,6 +7,8 @@ SECTIONS {
 	.text ORIGIN(ram0):
 	{
 		__text_start__ = .;
+		*(.vectors)
+		*(.vectors.*)
 		*(.text)
 		*(.text.*)
 		. = ALIGN(4);

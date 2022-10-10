@@ -1,6 +1,6 @@
 ifdef OS
 TARGET = .\out\main
-SRCS = .\src\main.s
+SRCS = .\src\main.s 
 else
 TARGET = ./out/main
 SRCS = ./src/main.s
@@ -59,10 +59,6 @@ build: $(TARGET).elf $(TARGET).hex $(TARGET).bin $(TARGET).lst
 
 $(TARGET).elf: $(OBJS)
 	@$(CC) $(LDFLAGS) ./out/$(notdir $(basename $(OBJS))).o -o $@
-
-%.o: %.c
-	@echo "Building" $<
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o out/$(notdir $@)
 
 %.o: %.s
 	@echo "Building" $<

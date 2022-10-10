@@ -2,10 +2,13 @@
 num1: .word 5
 num2: .word 2
 tmp: .space 4
+
 .text
+b _start @ We don't have vectors table so we branch to start by default.
 _start:
 
-mov r3, #0
+mov r1, #4
+mov r3, #5
 _loop:
     ldr r0, =num1
     ldr r1, [r0]
