@@ -1,9 +1,9 @@
 ifdef OS
 TARGET = .\out\main
-SRCS = .\src\main.s 
+SRCS = .\src\main.s
 else
 TARGET = ./out/main
-SRCS = ./src/main.s
+SRCS = ./src/main.s ./src/crt0.s
 endif
 
 OBJS =  $(addsuffix .o, $(basename $(SRCS)))
@@ -53,12 +53,13 @@ else
 endif
 
 all: clean $(SRCS) build size
+	@echo $(OBJS)
 	@echo "Successfully finished..."
 
 build: $(TARGET).elf $(TARGET).hex $(TARGET).bin $(TARGET).lst
 
 $(TARGET).elf: $(OBJS)
-	@$(CC) $(LDFLAGS) ./out/$(notdir $(basename $(OBJS))).o -o $@
+	@$(CC) $(LDFLAGS) ./out/main.o ./out/crt0.o -o $@
 
 %.o: %.s
 	@echo "Building" $<
