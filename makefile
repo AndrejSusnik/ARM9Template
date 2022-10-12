@@ -1,10 +1,6 @@
-ifdef OS
-TARGET = .\out\main
-SRCS = .\src\main.s
-else
 TARGET = ./out/main
 SRCS = ./src/main.s ./src/crt0.s
-endif
+
 
 OBJS =  $(addsuffix .o, $(basename $(SRCS)))
 INCLUDES = -I.
@@ -38,7 +34,12 @@ LDFLAGS += --specs=nosys.specs
 LDFLAGS += -Wl,-Map=$(TARGET).map #generate map file
 LDFLAGS += -T$(LINKER_SCRIPT)
 
+ifdef OS
+CROSS_COMPILE = D:/RAVINOR/Apps/xPack/xpack-arm-none-eabi-gcc-11.3.1-1.1/bin/arm-none-eabi-
+else
 CROSS_COMPILE = arm-none-eabi-
+endif
+
 CC = $(CROSS_COMPILE)gcc
 LD = $(CROSS_COMPILE)ld
 OBJDUMP = $(CROSS_COMPILE)objdump
@@ -97,11 +98,5 @@ burn:
 
 clean:
 	@echo "Cleaning..."
-	@$(RM_CMD) $(TARGET).elf
-	@$(RM_CMD) $(TARGET).bin
-	@$(RM_CMD) $(TARGET).map
-	@$(RM_CMD) $(TARGET).hex
-	@$(RM_CMD) $(TARGET).lst
-	@$(RM_CMD) ./out/*.o
 
 .PHONY: all build size disass disass-all debug ocd burn clean

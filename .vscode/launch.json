@@ -5,7 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug",
+      "name": "Debug windows",
+      "cwd": "${workspaceRoot}",
+      "executable": "./out/main.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "qemu",
+      "serverpath": "D:\\RAVINOR\\Apps\\xPack\\xpack-qemu-arm-7.1.0-1\\bin\\qemu-system-arm",
+      "gdbPath": "D:\\RAVINOR\\Apps\\xPack\\xpack-arm-none-eabi-gcc-11.3.1-1.1\\bin\\arm-none-eabi-gdb.exe",
+      "cpu": "cortex-a9",
+      "machine": "xilinx-zynq-a9",
+      "showDevDebugOutput": true,
+      "preLaunchTask": "Build"
+    },
+    {
+      "name": "Debug linux",
       "cwd": "${workspaceRoot}",
       "executable": "./out/main.elf",
       "request": "launch",

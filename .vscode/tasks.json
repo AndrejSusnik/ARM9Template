@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "make",
             "windows": {
-                "command": " C:\\ST\\STM32CubeIDE_1.10.1\\STM32CubeIDE\\plugins\\com.st.stm32cube.ide.mcu.externaltools.make.win32_2.0.100.202202231230\\tools\\bin\\make.exe"
+                "command": " D:\\RAVINOR\\Apps\\xPack\\xpack-windows-build-tools-4.3.0-1\\bin\\make.exe"
             },
             "group": {
                 "kind": "build",
