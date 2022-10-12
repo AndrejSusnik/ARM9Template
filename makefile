@@ -102,6 +102,6 @@ clean:
 	@$(RM_CMD) $(TARGET).map
 	@$(RM_CMD) $(TARGET).hex
 	@$(RM_CMD) $(TARGET).lst
-	@$(RM_CMD) $(TARGET).o
+	@$(RM_CMD) ./out/*.o
 
 .PHONY: all build size disass disass-all debug ocd burn clean

@@ -1,12 +1,11 @@
 .data
-    num1: .word 5
+    num1: .word 50
     num2: .word 20
     tmp: .space 4
 
 .text
 .align
 .global __start
-
 __start:
 
 mov r6, #6
